@@ -86,3 +86,22 @@ Thumbs.db
 
 # TypeScript
 *.tsbuildinfo
+
+# ASP.NET Core API specific
+api/logs/
+api/**/*.db
+api/**/*.db-shm
+api/**/*.db-wal
+api/**/appsettings.local.json
+api/**/Properties/launchSettings.json
+
+# Test coverage reports
+api/**/coverage/
+api/**/TestResults/
+
+# User-specific files
+api/**/*.rsuser
+api/**/*.suo
+api/**/*.user
+api/**/*.userosscache
+api/**/*.sln.docstates
