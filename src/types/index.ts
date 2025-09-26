@@ -1,5 +1,81 @@
 // Core types for the consultant project management system
 
+// Gravatar and Avatar types
+export interface GravatarOptions {
+  size?: number;
+  defaultImage?: 'mp' | 'identicon' | 'monsterid' | 'wavatar' | 'retro' | 'robohash' | 'blank' | string;
+  rating?: 'g' | 'pg' | 'r' | 'x';
+  forceDefault?: boolean;
+}
+
+export interface AvatarProps {
+  email?: string;
+  firstName?: string;
+  lastName?: string;
+  avatar?: string;
+  size?: number;
+  className?: string;
+  gravatarOptions?: Omit<GravatarOptions, 'size'>;
+}
+
+// Certification types
+export interface Certification {
+  id: string;
+  name: string;
+  issuingOrganization: string;
+  issueDate: Date;
+  expirationDate?: Date;
+  credentialId?: string;
+  credentialUrl?: string;
+  description?: string;
+  category: CertificationCategory;
+  level: CertificationLevel;
+  status: CertificationStatus;
+  verificationStatus: VerificationStatus;
+  logo?: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export type CertificationCategory =
+  | 'cloud'
+  | 'development'
+  | 'security'
+  | 'data'
+  | 'devops'
+  | 'management'
+  | 'design'
+  | 'other';
+
+export type CertificationLevel =
+  | 'foundational'
+  | 'associate'
+  | 'professional'
+  | 'expert'
+  | 'specialist';
+
+export type CertificationStatus =
+  | 'active'
+  | 'expired'
+  | 'expiring_soon'
+  | 'revoked';
+
+export type VerificationStatus =
+  | 'verified'
+  | 'pending'
+  | 'unverified'
+  | 'failed';
+
+export interface CertificationFilter {
+  search?: string;
+  categories?: CertificationCategory[];
+  levels?: CertificationLevel[];
+  status?: CertificationStatus[];
+  verificationStatus?: VerificationStatus[];
+  issuingOrganizations?: string[];
+  expiringWithinDays?: number;
+}
+
 export interface Consultant {
   id: string;
   firstName: string;
@@ -11,7 +87,7 @@ export interface Consultant {
   department?: string;
   skills: Technology[];
   experience: number; // years
-  certifications: string[];
+  certifications: Certification[];
   availability: 'available' | 'busy' | 'unavailable';
   createdAt: Date;
   updatedAt: Date;

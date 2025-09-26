@@ -15,7 +15,8 @@
       "Bash(find:*)",
       "Bash(cat:*)",
       "Bash(npx tsc:*)",
-      "Bash(npx shadcn-ui:*)"
+      "Bash(npx shadcn-ui:*)",
+      "Bash(node:*)"
     ],
     "deny": [],
     "ask": []
