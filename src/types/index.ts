@@ -125,14 +125,35 @@ export interface PaginationConfig {
   total: number;
 }
 
+// Consultant search and filter types
+export interface ConsultantSearchFilters {
+  search: string;
+  availability: Consultant['availability'][];
+  skills: string[];
+  departments: string[];
+  experienceRange: {
+    min?: number;
+    max?: number;
+  };
+}
+
 // UI state types
 export interface ProjectViewMode {
+  type: 'cards' | 'table' | 'list';
+}
+
+export interface ConsultantViewMode {
   type: 'cards' | 'table' | 'list';
 }
 
 export interface ProjectBulkActions {
   selectedIds: string[];
   action: 'delete' | 'updateStatus' | 'assignConsultant' | 'addTechnology' | 'export';
+}
+
+export interface ConsultantBulkActions {
+  selectedIds: string[];
+  action: 'delete' | 'updateAvailability' | 'addSkill' | 'export';
 }
 
 // Form types
@@ -155,6 +176,24 @@ export interface CreateProjectFormData {
 }
 
 export interface UpdateProjectFormData extends Partial<CreateProjectFormData> {
+  id: string;
+}
+
+export interface CreateConsultantFormData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone?: string;
+  title: string;
+  department?: string;
+  skills: string[];
+  experience: number;
+  certifications: string[];
+  availability: Consultant['availability'];
+  notes?: string;
+}
+
+export interface UpdateConsultantFormData extends Partial<CreateConsultantFormData> {
   id: string;
 }
 
@@ -189,6 +228,7 @@ export interface ProjectStats {
   totalProjects: number;
   activeProjects: number;
   completedProjects: number;
+  planningProjects: number;
   totalRevenue: number;
   avgProjectDuration: number;
   topTechnologies: Array<{
@@ -204,6 +244,26 @@ export interface ProjectStats {
     consultant: Consultant;
     activeProjects: number;
     utilization: number;
+  }>;
+}
+
+export interface ConsultantStats {
+  totalConsultants: number;
+  availableConsultants: number;
+  busyConsultants: number;
+  unavailableConsultants: number;
+  avgExperience: number;
+  topSkills: Array<{
+    technology: Technology;
+    count: number;
+  }>;
+  departmentBreakdown: Array<{
+    department: string;
+    count: number;
+  }>;
+  experienceDistribution: Array<{
+    range: string;
+    count: number;
   }>;
 }
 
