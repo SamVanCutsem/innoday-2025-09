@@ -1,10 +1,36 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+# Consultant CV Management System - Development Guidelines
 
 ## Project Overview
+A web-based application for managing consultant profiles, projects, and generating customized CVs. The system serves as a centralized repository for consultant information and enables rapid CV generation for business proposals.
 
-This is an Innovation Day project for September 2025, built as a Next.js 15 application with shadcn/ui components and modern TypeScript architecture.
+## Core Domain Entities
+
+### Consultant
+- Represents individual consultants with professional profiles
+- Contains: personal info, skills, experience, certifications
+- Key relationships: has many Projects, has many Skills, has many Certifications
+
+### Project
+- Represents client engagements and work experience
+- Contains: description, duration, technologies, outcomes, client reference
+- Key relationships: belongs to Consultant, belongs to Client, has many Technologies
+
+### Client
+- Represents organizations consultants have worked with
+- Contains: company info, industry, NDA status
+- Key relationships: has many Projects
+
+### CV Template
+- Represents different CV formats and layouts
+- Contains: sections, formatting rules, export formats
+- Key relationships: used by many CVs
+
+### Generated CV
+- Represents a specific CV instance created for an opportunity
+- Contains: selected projects, customized descriptions, version history
+- Key relationships: belongs to Consultant, uses Template
 
 ## Development Commands
 
