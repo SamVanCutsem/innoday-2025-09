@@ -4,19 +4,69 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is an Innovation Day project repository for September 2025. The repository is currently in its initial setup phase with a minimal structure.
+This is an Innovation Day project for September 2025, built as a Next.js 15 application with shadcn/ui components and modern TypeScript architecture.
 
-## Repository Structure
+## Development Commands
 
-The repository currently contains:
-- `.claude/agents/` - Custom Claude Code agent definitions
-  - `front-end-developer.md` - Frontend development specialist agent
-  - `ui-ux-designer.md` - UI/UX design specialist agent
-- Basic project files (README, LICENSE, .gitignore)
+### Essential Commands
+- `npm run dev` - Start development server (http://localhost:3000)
+- `npm run build` - Build production application
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint checks
+- `npm run type-check` - Run TypeScript type checking
+
+### Adding shadcn/ui Components
+```bash
+npx shadcn-ui@latest add [component-name]
+```
+Components are installed to `src/components/ui/` with automatic configuration.
+
+## Architecture Overview
+
+### Tech Stack
+- **Next.js 15** with App Router and React Server Components
+- **React 19** with latest features and concurrent rendering
+- **TypeScript** with strict mode and path mapping
+- **Tailwind CSS** with CSS variables for theming
+- **shadcn/ui** for accessible, customizable components
+- **Radix UI** primitives for complex component behavior
+
+### Project Structure
+```
+src/
+├── app/                    # Next.js App Router pages and layouts
+│   ├── globals.css        # Global styles and CSS variables
+│   ├── layout.tsx         # Root layout with metadata
+│   └── page.tsx           # Homepage
+├── components/
+│   └── ui/                # shadcn/ui components
+├── lib/
+│   └── utils.ts           # Utility functions (cn helper)
+├── types/                 # TypeScript type definitions
+└── utils/                 # Additional utility functions
+```
+
+### Path Mapping
+Use these TypeScript path aliases:
+- `@/*` → `./src/*`
+- `@/components/*` → `./src/components/*`
+- `@/lib/*` → `./src/lib/*`
+- `@/utils/*` → `./src/utils/*`
+- `@/types/*` → `./src/types/*`
+
+### Styling System
+- **CSS Variables**: Theme colors defined in `globals.css` with automatic dark/light mode support
+- **Tailwind Classes**: Use semantic color classes (`bg-background`, `text-foreground`, etc.)
+- **Component Variants**: Leverage `class-variance-authority` for component styling
+- **Utility Function**: Use `cn()` from `@/lib/utils` for conditional classes
+
+### Component Patterns
+- All UI components use Radix UI primitives for accessibility
+- Components support `className` prop for customization
+- Forwarded refs pattern for proper component composition
+- Variants defined using `cva()` for consistent styling
 
 ## Custom Agents
-
-This repository includes two specialized agents that can be used proactively:
 
 ### Frontend Developer Agent (`frontend-developer`)
 - Specializes in React 19, Next.js 15, and modern frontend architecture
@@ -30,17 +80,16 @@ This repository includes two specialized agents that can be used proactively:
 - Expertise in user flows, interface optimization, and cross-platform design
 - Use for design systems, wireframes, and interface optimization
 
-## Development Setup
+## Configuration Files
 
-This repository appears to be configured for .NET development based on the .gitignore file, but no specific .NET projects or configuration files are present yet.
+### Key Configurations
+- `next.config.js` - Next.js configuration with React 19 support and image optimization
+- `tailwind.config.ts` - Tailwind with shadcn/ui theme and CSS variables
+- `components.json` - shadcn/ui configuration for component installation
+- `tsconfig.json` - TypeScript with strict mode and path mapping
 
-## Current State
-
-The repository is in early development phase with:
-- No build configuration files present
-- No source code or project structure established
-- Ready for project setup and initial implementation
-
-## Notes
-
-Since this is an Innovation Day project, the development approach may be rapid prototyping and experimentation-focused.
+### Development Features
+- Hot reload with React Fast Refresh
+- TypeScript strict mode for better error catching
+- ESLint with Next.js recommended rules
+- Automatic CSS purging in production builds
