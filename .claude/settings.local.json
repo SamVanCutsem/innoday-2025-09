@@ -8,7 +8,14 @@
       "Bash(npm run build:*)",
       "Bash(mkdir:*)",
       "Bash(dotnet build:*)",
-      "Bash(dotnet test:*)"
+      "Bash(dotnet test:*)",
+      "Bash(npx shadcn@latest add:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run dev:*)",
+      "Bash(find:*)",
+      "Bash(cat:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npx shadcn-ui:*)"
     ],
     "deny": [],
     "ask": []

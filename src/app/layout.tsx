@@ -1,12 +1,14 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
+import Navigation from "@/components/layout/Navigation"
+import { Toaster } from "@/components/ui/toaster"
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Innovation Day 2025-09",
-  description: "Innovation Day project built with Next.js 15 and shadcn/ui",
+  title: "Consultant Management System",
+  description: "Professional project management system for consultants and client engagements",
 }
 
 export default function RootLayout({
@@ -18,7 +20,11 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <div className="min-h-screen bg-background font-sans antialiased">
-          {children}
+          <Navigation />
+          <main className="pt-16">
+            {children}
+          </main>
+          <Toaster />
         </div>
       </body>
     </html>
