@@ -156,9 +156,9 @@ export default function SearchFilters({
 
         {/* Quick Status Filter */}
         <Select
-          value={filters.status.length === 1 ? filters.status[0] : ''}
+          value={filters.status.length === 1 ? filters.status[0] : 'all'}
           onValueChange={(value) => {
-            if (value) {
+            if (value && value !== 'all') {
               updateFilters({ status: [value as Project['status']] });
             } else {
               updateFilters({ status: [] });
@@ -169,7 +169,7 @@ export default function SearchFilters({
             <SelectValue placeholder="Status" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="">All Status</SelectItem>
+            <SelectItem value="all">All Status</SelectItem>
             {statusOptions.map((option) => (
               <SelectItem key={option.value} value={option.value}>
                 {option.label}
